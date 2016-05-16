@@ -2,6 +2,7 @@ import java.util.*;
 import javax.swing.*;
 import java.io.*;
 // ╧наж╫Х╢ы ©ю╧ы
+// а╬ю╠╫Х╢ы ©ю╧ы
 public class MainFrame extends JFrame{
 
 	public MainFrame() {
