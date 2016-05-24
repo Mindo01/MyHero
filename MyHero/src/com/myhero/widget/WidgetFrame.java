@@ -249,10 +249,18 @@ public class WidgetFrame extends JFrame implements ActionListener {
 			/* 숨겨진 아이콘에 표시하는 부분 : 수정 필요!!! */
 			Image image = Toolkit.getDefaultToolkit().getImage("images/back.jpg");
 			TrayIcon trayIcon = new TrayIcon(image, "Java 6.0 SystemTrayIcon Test", mPopup);
+			
 			trayIcon.setImageAutoSize(true);
 
 			systemTray = SystemTray.getSystemTray();
 			systemTray.add(trayIcon);
+			trayIcon.addMouseListener(new MouseAdapter() { // 마우스 리스너 부착
+				public void mousePressed(MouseEvent e) {
+					System.out.println("트레이아이콘이 눌렸다 빠밤");
+					
+					//window.open(charPane);
+				}
+			});
 		}
 
 		popup = new PopupMenu();
@@ -328,6 +336,13 @@ public class WidgetFrame extends JFrame implements ActionListener {
 		}
 		if (mItem == mexit) {
 			System.exit(0); // 시스템을 종료 시킨다
+			 dispose();
+			  try {
+				systemTray.wait();
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} //프로그램 종료
 		}
 	}
 
